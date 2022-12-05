@@ -57,7 +57,38 @@ class ListaCarros(Resource):
         return carro_schema.dump(novo_carro)
 
 
+class PostResource(Resource):
+    def get(self, id_carro):
+        carro = Carro.query.get_or_404(id_carro)
+        return carro_schema.dump(carro)
+
+    def update(self, id_carro):
+        carro = Carro.query.get_or_404(id_carro)
+
+        if 'marca' in request.json:
+            carro.marca = request.json['marca']
+        if 'nome' in request.json:
+            carro.nome = request.json['nome']
+        if 'ano' in request.json:
+            carro.ano = request.json['ano']
+        if 'cor' in request.json:
+            carro.cor = request.json['cor']
+        if 'tipo' in request.json:
+            carro.tipo = request.json['tipo']
+
+        db.session.commit()
+        return carro_schema.dump()
+
+    def delete(self, id_carro):
+        carro = Carro.query.get_or_404(id_carro)
+
+        db.session.delete(carro)
+        db.session.commit()
+        return '', 204
+
+
 api.add_resource(ListaCarros, '/carros')
+api.add_resource(PostResource, '/carros/<int:id_carro>')
 
 if __name__ == '__main__':
     app.run(debug=True)
