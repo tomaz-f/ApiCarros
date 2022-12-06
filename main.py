@@ -10,7 +10,7 @@ ma = Marshmallow(app)
 api = Api(app)
 
 
-class Carro(db.Model):
+class Carro(db.Model):  # Modelando o banco com SQLAlchemy
     __tablename__ = "Carros"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -20,16 +20,13 @@ class Carro(db.Model):
     cor = db.Column(db.String(255))
     tipo = db.Column(db.String(255))
 
-    def __repr__(self):
-        return '<Carro %s' % self.marca
 
-
-with app.app_context():
+with app.app_context():  # Criando o banco e Inicializando a sessão
     db.create_all()
     db.session.commit()
 
 
-class CarroSchema(ma.Schema):
+class CarroSchema(ma.Schema):  # Utilizando o marshmallow para converter os dados em objetos python
     class Meta:
         fields = ("id", "marca", "nome", "ano", "cor", "tipo")
         model = Carro
@@ -39,12 +36,12 @@ carro_schema = CarroSchema()
 carros_schema = CarroSchema(many=True)
 
 
-class ListaCarros(Resource):
-    def get(self):
+class ListaCarros(Resource):  # retorna a lista dos carros cadastrados e cria nova informação
+    def get(self):  # Metodo GET
         carros = Carro.query.all()
         return carros_schema.dump(carros)
 
-    def post(self):
+    def post(self):  # Metodo POST
         novo_carro = Carro(
             marca=request.json['marca'],
             nome=request.json['nome'],
@@ -57,12 +54,12 @@ class ListaCarros(Resource):
         return carro_schema.dump(novo_carro)
 
 
-class PostResource(Resource):
-    def get(self, id_carro):
+class ModificaCarro(Resource):  # Retorna o carro por id com o metodo GET e modifica com metodo PUT, DELETE
+    def get(self, id_carro):  # Metodo GET POR ID
         carro = Carro.query.get_or_404(id_carro)
         return carro_schema.dump(carro)
 
-    def update(self, id_carro):
+    def put(self, id_carro):  # Metodo PUT
         carro = Carro.query.get_or_404(id_carro)
 
         if 'marca' in request.json:
@@ -77,9 +74,9 @@ class PostResource(Resource):
             carro.tipo = request.json['tipo']
 
         db.session.commit()
-        return carro_schema.dump()
+        return carro_schema.dump(carro)
 
-    def delete(self, id_carro):
+    def delete(self, id_carro):  # Metodo DELETE
         carro = Carro.query.get_or_404(id_carro)
 
         db.session.delete(carro)
@@ -87,8 +84,11 @@ class PostResource(Resource):
         return '', 204
 
 
+# Criando os endpoints
+
+
 api.add_resource(ListaCarros, '/carros')
-api.add_resource(PostResource, '/carros/<int:id_carro>')
+api.add_resource(ModificaCarro, '/carros/<int:id_carro>')
 
 if __name__ == '__main__':
     app.run(debug=True)
