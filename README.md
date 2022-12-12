@@ -26,7 +26,7 @@
 
 A api vai rodar no http://localhost:5000/carros
 
-> python main.py
+> python app.py
 
 ### Fazendo as requisiçoes
 
