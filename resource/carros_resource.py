@@ -1,6 +1,8 @@
 from flask_restful import Resource
 from flask import request
-from model.carros_schemas import carros_schema, carro_schema
+
+from model import carros_schemas
+from model.carros_schemas import schema, carros_schema
 from utils.database import db
 from model.carro_db_model import Carro
 
@@ -20,13 +22,13 @@ class ListaCarros(Resource):
         )
         db.session.add(novo_carro)
         db.session.commit()
-        return carro_schema.dump(novo_carro)
+        return schema.dump(novo_carro)
 
 
 class ModificaCarro(Resource):
     def get(self, id_carro):
         carro = Carro.query.get_or_404(id_carro)
-        return carro_schema.dump(carro)
+        return schema.dump(carro)
 
     def put(self, id_carro):
         carro = Carro.query.get_or_404(id_carro)
@@ -43,7 +45,7 @@ class ModificaCarro(Resource):
             carro.tipo = request.json['tipo']
 
         db.session.commit()
-        return carro_schema.dump(carro)
+        return schema.dump(carro)
 
     def delete(self, id_carro):
         carro = Carro.query.get_or_404(id_carro)
