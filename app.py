@@ -4,6 +4,16 @@ from resource.carros_resource import ListaCarros, ModificaCarro
 from utils.database import db
 
 
+def config_database(app):
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb+mariadbconnector://root:123456@localhost:3306/carros'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
+
+
 def config_routes(app):
     api = Api()
 
@@ -14,15 +24,12 @@ def config_routes(app):
 
 
 def app_start():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb+mariadbconnector://root:123456@localhost:3306/carros'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
+    app = Flask(__name__)
 
     config_routes(app)
+    config_database(app)
+
     return app
 
 

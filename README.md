@@ -6,7 +6,7 @@
 2. Flask-RESTFUL
 3. SQLAlchemy
 4. Marshmallow
-5 .MariaDB
+5. MariaDB
 
 
 # Como rodar a API
@@ -19,7 +19,8 @@
 
 1. Utilize o pipenv para baixar as dependencias no projeto
 
-> pipenv install -
+> pipenv install
+
 > pipenv shell
 
 ### Rodando a api
