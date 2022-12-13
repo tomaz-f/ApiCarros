@@ -1,13 +1,13 @@
 from flask_restful import Resource
 from flask import request
 
-from model import carros_schemas
 from model.carros_schemas import schema, carros_schema
 from utils.database import db
 from model.carro_db_model import Carro
 
 
 class ListaCarros(Resource):
+
     def get(self):
         carros = Carro.query.all()
         return carros_schema.dump(carros)
@@ -26,6 +26,7 @@ class ListaCarros(Resource):
 
 
 class ModificaCarro(Resource):
+
     def get(self, id_carro):
         carro = Carro.query.get_or_404(id_carro)
         return schema.dump(carro)
