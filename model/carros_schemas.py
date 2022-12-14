@@ -1,12 +1,13 @@
-from marshmallow import Schema, fields
+from marshmallow import Schema
+from marshmallow.fields import Int, Str
 
 
 class CarroSchema(Schema):
-    marca = fields.Str(required=True)
-    nome = fields.Str(required=True)
-    ano = fields.Int(required=True)
-    cor = fields.Str(required=True)
-    tipo = fields.Str(required=True)
+    marca = Str(required=True)
+    nome = Str(required=True)
+    ano = Int(required=True)
+    cor = Str(required=True)
+    tipo = Str(required=True)
 
 
 schema = CarroSchema()

@@ -17,7 +17,7 @@ def config_database(app):
 def config_routes(app):
     api = Api()
 
-    api.add_resource(ListaCarros, '/carros')
+    api.add_resource(ListaCarros, '/carros', methods=['POST', 'GET'])
     api.add_resource(ModificaCarro, '/carros/<int:id_carro>')
 
     api.init_app(app)
