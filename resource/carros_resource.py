@@ -1,16 +1,25 @@
 from flask_restful import Resource
 from flask import request
 
-from model.carros_schemas import schema, carros_schema
+from model.carros_schemas import CarroSchema
 from utils.database import db
 from model.carro_db_model import Carro
 
 
 class ListaCarros(Resource):
 
-    def get(self):
-        carros = Carro.query.all()
-        return carros_schema.dump(carros)
+    def get(self, carro_id=None):
+        if carro_id is not None:
+            carro = Carro.query.get(carro_id)
+            if carro:
+                carro_schema = CarroSchema()
+                return carro_schema.dump(carro)
+            else:
+                return {'error': 'Carro não encontrado'}, 404
+        else:
+            carros = Carro.query.all()
+            carro_schema = CarroSchema(many=True)
+            return carro_schema.dump(carros)
 
     def post(self):
         novo_carro = Carro(

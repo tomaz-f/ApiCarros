@@ -9,6 +9,3 @@ class CarroSchema(Schema):
     cor = Str(required=True)
     tipo = Str(required=True)
 
-
-schema = CarroSchema()
-carros_schema = CarroSchema(many=True)
