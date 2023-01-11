@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from resource.carros_resource import ListaCarros, ModificaCarro
+from resource.carros_resource import CarrosResource
 from utils.database import db
 
 
@@ -17,8 +17,7 @@ def config_database(app):
 def config_routes(app):
     api = Api()
 
-    api.add_resource(ListaCarros, '/carros', methods=['POST', 'GET'])
-    api.add_resource(ModificaCarro, '/carros/<int:id_carro>')
+    api.add_resource(CarrosResource, '/carros/', '/carros/<int:id>', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 
     api.init_app(app)
 
