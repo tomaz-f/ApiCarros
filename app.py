@@ -1,17 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from resource.carros_resource import CarrosResource
-from utils.database import db
-
-
-def config_database(app):
-
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb+mariadbconnector://root:123456@localhost:3306/carros'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
+from utils.database import config_database
 
 
 def config_routes(app):

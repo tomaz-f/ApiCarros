@@ -1,6 +1,6 @@
 from flask_restful import Resource
-from flask import request, render_template
-from model.carros_schemas import carros_schema, carro_schema
+from flask import request
+from schema.carros_schemas import carros_schema, carro_schema
 from utils.database import db
 from model.carro_db_model import Carro
 
