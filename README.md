@@ -19,9 +19,9 @@
 
 1. Utilize o pipenv para baixar as dependencias no projeto
 
-> pipenv install
-
 > pipenv shell
+
+> pipenv install
 
 ### Rodando a api
 
