@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request
 from schema.carros_schemas import carros_schema, carro_schema
 from utils.database import db
-from model.carro_db_model import Carro
+from models.carro_db_model import Carro
 
 
 class CarrosResource(Resource):
