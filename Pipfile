@@ -12,6 +12,8 @@ marshmallow = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 psycopg2-binary = "*"
+pytest = "*"
+decouple = "*"
 
 [dev-packages]
 autopep8 = "*"
