@@ -6,7 +6,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - /var/cache/postgres_data:/var/lib/postgresql/data
+      - postgres:/data/postgres
 
   pgadmin:
     image: dpage/pgadmin4
