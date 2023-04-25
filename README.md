@@ -6,8 +6,7 @@
 2. Flask-RESTFUL
 3. SQLAlchemy
 4. Marshmallow
-5. MariaDB
-
+5. Postgresql
 
 # Como rodar a API
 
@@ -15,19 +14,19 @@
 
 > git clone https://github.com/tomaz-f/ApiCarros.git
 
-### Instalando as dependencias
+### Criando um virtualenv e Instalando as dependencias
 
-1. Utilize o pipenv para baixar as dependencias no projeto
+1. Utilize o pip para baixar as dependencias no projeto
 
-> pipenv shell
+> virtualenv .venv
 
-> pipenv install
+> pip install -r requirements.txt
 
 ### Rodando a api
 
-A api vai rodar no http://localhost:5000/carros
+> flask run app
 
-> python app.py
+A api vai rodar no http://localhost:5000/carros
 
 ### Fazendo as requisiçoes
 

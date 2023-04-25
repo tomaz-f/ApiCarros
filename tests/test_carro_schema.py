@@ -1,6 +1,6 @@
-from model.carro_db_model import Carro
-from schema.carros_schemas import CarroSchema, carros_schema, carro_schema
-from utils.database import db
+from app.models.carro_db_model import Carro
+from app.schema.carros_schemas import CarroSchema, carros_schema, carro_schema
+from app.database.connection import db
 
 
 def test_carro_schema():

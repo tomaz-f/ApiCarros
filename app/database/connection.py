@@ -1,4 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import SQLAlchemy
 from decouple import config as configdecouple
 
 db = SQLAlchemy()

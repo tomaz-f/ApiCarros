@@ -1,15 +1,7 @@
 from flask import Flask
-from flask_restful import Api
-from resource.carros_resource import CarrosResource
-from utils.database import config_database
 
-
-def config_routes(app):
-    api = Api()
-
-    api.add_resource(CarrosResource, '/carros/', '/carros/<int:id>', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
-
-    api.init_app(app)
+from app.database.connection import config_database
+from app.routes.car_routes import config_routes
 
 
 def app_start():
