@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
-from resource.carros_resource import CarrosResource
-from utils.database import config_database
+from app.resource.carros_resource import CarrosResource
+from app.utils.database import config_database
 
 
 def config_routes(app):
