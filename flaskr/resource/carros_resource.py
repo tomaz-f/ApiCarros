@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from flask import request
-from schema.carros_schemas import carros_schema, carro_schema
-from app.database.connection import db
-from models.carro_db_model import Carro
+from flaskr.schema.carros_schemas import carros_schema, carro_schema
+from flaskr.database.connection import db
+from flaskr.models.carro_db_model import Carro
 
 
 class CarrosResource(Resource):

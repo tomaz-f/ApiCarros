@@ -1,5 +1,6 @@
-from sqlalchemy import SQLAlchemy
+
 from decouple import config as configdecouple
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 

@@ -1,4 +1,4 @@
-from app.database.connection import db
+from flaskr.database.connection import db
 
 
 class Carro(db.Model):

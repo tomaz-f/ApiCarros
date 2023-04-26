@@ -1,6 +1,7 @@
 from flask_restful import Api
 
-from app.resource.carros_resource import CarrosResource
+from flaskr.resource.carros_resource import CarrosResource
+
 
 def config_routes(app):
     api = Api()
