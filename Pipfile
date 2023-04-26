@@ -30,6 +30,7 @@ typing-extensions = "==4.5.0"
 werkzeug = "==2.3.0"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.11"

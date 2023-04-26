@@ -1,7 +1,12 @@
 # Path: tests/test_carros_resource.py
 
-from utils.database import db
-from model.carro_db_model import Carro
+from flaskr.database.connection import db
+from flaskr.models.carro_db_model import Carro
+
+# test db connection
+def test_db_connection():
+    assert db.session.query('1').from_statement('SELECT 1').all() == [('1',)]
+    
 
 
 def test_get_all_carros(client):
