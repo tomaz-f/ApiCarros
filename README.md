@@ -31,3 +31,15 @@ A api vai rodar no http://localhost:5000/carros
 ### Fazendo as requisiçoes
 
 Utilize o postman ou qualquer outro programa para testar a api.
+
+### EXEMPLO DE .env
+
+>
+
+    POSTGRES_USER=admin
+    POSTGRES_PASSWORD=admin
+    POSTGRES_DB=flask_db
+    PGADMIN_DEFAULT_EMAIL=admin@gmail.com
+    PGADMIN_DEFAULT_PASSWORD=admin
+    DB_URL=postgresql+psycopg2:///main?user=admin&password=adminf
+    PGDATA=/data/postgres
