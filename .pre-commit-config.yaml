@@ -1,0 +1,13 @@
+repos:
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: [
+            "-rn", # Display the total number of messages
+            "--rcfile=.pylintrc", # Use the specified configuration file
+            "--load-plugins=pylint.extensions.docparams", # Load the specified plugins
+          ]
