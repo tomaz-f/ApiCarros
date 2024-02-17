@@ -4,9 +4,10 @@ from flaskr.database.connection import db
 from flaskr.models.carro_db_model import Carro
 
 # test db connection
+
+
 def test_db_connection():
     assert db.session.query('1').from_statement('SELECT 1').all() == [('1',)]
-    
 
 
 def test_get_all_carros(client):
@@ -15,7 +16,7 @@ def test_get_all_carros(client):
     assert len(response.json) == 0
 
     carro = Carro(marca='Fiat', nome='Uno',
-                  tipo='Hatch', ano=2010, cor='Vermelho')
+                  tipo='Hatch', ano=2010, cor='Vermelho', preco=12000.00)
     db.session.add(carro)
     db.session.commit()
 
@@ -26,7 +27,7 @@ def test_get_all_carros(client):
 
 def test_get_carro(client):
     carro = Carro(marca='Fiat', nome='Uno',
-                  tipo='Hatch', ano=2010, cor='Vermelho')
+                  tipo='Hatch', ano=2010, cor='Vermelho', preco=20000.00)
     db.session.add(carro)
     db.session.commit()
 
@@ -92,7 +93,7 @@ def test_post_carro_invalid_json_keys(client):
 
 def test_put_carro(client):
     carro = Carro(marca='Fiat', nome='Uno',
-                  tipo='Hatch', ano=2010, cor='Vermelho')
+                  tipo='Hatch', ano=2010, cor='Vermelho', preco=1200.00)
     db.session.add(carro)
     db.session.commit()
 
@@ -153,7 +154,7 @@ def test_put_carro_invalid_json_keys(client):
 
 def test_delete_carro(client):
     carro = Carro(marca='Fiat', nome='Uno',
-                  tipo='Hatch', ano=2010, cor='Vermelho')
+                  tipo='Hatch', ano=2010, cor='Vermelho', preco=12000.00)
     db.session.add(carro)
     db.session.commit()
 
