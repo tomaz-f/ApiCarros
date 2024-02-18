@@ -1,5 +1,5 @@
-from flask import Flask
 import os
+from flask import Flask
 from flaskr.database.connection import config_database
 from flaskr.routes.car_routes import config_routes
 

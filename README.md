@@ -7,6 +7,7 @@
 3. SQLAlchemy
 4. Marshmallow
 5. Postgresql
+6. Psycopg2-bin
 
 # Como rodar a API
 
@@ -24,7 +25,7 @@
 
 ### Rodando a api
 
-> flask run app
+> flask --app flaskr run --debug
 
 A api vai rodar no http://localhost:5000/carros
 

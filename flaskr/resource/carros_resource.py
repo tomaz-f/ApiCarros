@@ -6,13 +6,12 @@ from flaskr.models.carro_db_model import Carro
 
 
 class CarrosResource(Resource):
-    def get(self, identifier=None):
-        if identifier is not None:
-            carro = Carro.query.get(identifier)
+    def get(self, id_car=None):
+        if id_car:
+            carro = Carro.query.get(id_car)
             return carro_schema.dump(carro)
-        else:
-            carros = Carro.query.all()
-            return carros_schema.dump(carros)
+        carros = Carro.query.all()
+        return carros_schema.dump(carros)
 
     def post(self):
         json_data = request.get_json()
@@ -28,25 +27,26 @@ class CarrosResource(Resource):
 
         return {"status": 'sucesso', 'data': result}, 201
 
-    def put(self, identifier):
+    def put(self, id_car):
         json_data = request.get_json()
         if not json_data:
             return {'message': 'Nenhuma informação nova foi enviada'}, 400
 
         data = carro_schema.load(json_data)
-        carro = Carro.query.get(identifier)
+        carro = Carro.query.get(id_car)
         carro.marca = data['marca']
         carro.nome = data['nome']
         carro.tipo = data['tipo']
         carro.ano = data['ano']
         carro.cor = data['cor']
+        carro.preco = data['preco']
 
         db.session.commit()
         result = carro_schema.dump(carro)
         return {"status": 'sucesso', 'data': result}, 204
 
-    def patch(self, identifier):
-        carro = Carro.query.get(identifier)
+    def patch(self, id_car):
+        carro = Carro.query.get(id_car)
         if not carro:
             return {'message': 'Carro não encontrado'}, 404
 
@@ -63,8 +63,8 @@ class CarrosResource(Resource):
 
         return {"status": 'sucesso', 'data': result}, 204
 
-    def delete(self, identifier):
-        carro = Carro.query.get(identifier)
+    def delete(self, id_car):
+        carro = Carro.query.get(id_car)
         db.session.delete(carro)
         db.session.commit()
 
