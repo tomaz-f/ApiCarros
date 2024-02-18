@@ -1,39 +1,32 @@
-# **API Restful com informações de carros**
+# **Restful API using flask-restful**
 
-### Ferramentas Utilizadas:
+## Clonando o Repositorio
 
-1. Flask
-2. Flask-RESTFUL
-3. SQLAlchemy
-4. Marshmallow
-5. Postgresql
-6. Psycopg2-bin
+> git clone <https://github.com/tomaz-f/ApiCarros.git>
 
-# Como rodar a API
+## Criando um virtualenv e Instalando as dependencias
 
-### Clonando o Repositorio
+Utilize o virtualenv para criar um ambiente exclusivo para essa aplicação.
 
-> git clone https://github.com/tomaz-f/ApiCarros.git
+> python -m .venv venv
 
-### Criando um virtualenv e Instalando as dependencias
+## Instales os pacotes necessarios
 
-1. Utilize o pip para baixar as dependencias no projeto
-
-> virtualenv .venv
+Utilize o aquivo de requirements juntamente com o pip para baixar as dependencias do projeto.
 
 > pip install -r requirements.txt
 
-### Rodando a api
+## Rodando a api
 
 > flask --app flaskr run --debug
 
-A api vai rodar no http://localhost:5000/carros
+A api vai rodar localmente: <http://localhost:5000/carros>
 
-### Fazendo as requisiçoes
+## Fazendo as requisiçoes
 
 Utilize o postman ou qualquer outro programa para testar a api.
 
-### EXEMPLO DE .env
+## EXEMPLO DE .env
 
 >
 
