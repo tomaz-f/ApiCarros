@@ -2,5 +2,8 @@
   "files.exclude": {
     "**/__pycache__": true,
     "**/__init__.py": false
-  }
+  },
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
